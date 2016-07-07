@@ -22,7 +22,9 @@ def blog_main(request):
 			})
 
 
-
+def blog_page(request):
+	if request.method == 'GET':
+		return render(request, 'blog.html')
 
 def post_page(request, slug, post_id):
 	if request.method == 'GET':

@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^$', views.blog_main, name='post_page'),
     url(r'^posts/' , include('articles.urls')),
+    url(r'^blog/', views.blog_page)
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
