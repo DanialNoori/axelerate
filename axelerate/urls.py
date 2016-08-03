@@ -23,8 +23,13 @@ from django.core.urlresolvers import reverse
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-    url(r'^$', views.blog_main, name='post_page'),
-    url(r'^posts/' , include('articles.urls')),
-    url(r'^blog/', views.blog_page)
+    url(r'^$', views.main_page, name='post_page'),
+    url(r'^blog/posts/' , include('articles.urls')),
+    url(r'^events/' , include('eventa.urls')),
+    url(r'^news/' , include('news.urls')),
+    url(r'^blog/$', views.blog_main),
+    url(r'^about-us/$', views.about_us),
+    url(r'^contact-us/$', views.contact_us),
+    url(r'^join-us/$', views.become_writer),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

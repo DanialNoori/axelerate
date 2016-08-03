@@ -6,5 +6,5 @@ from articles import views
 from django.core.urlresolvers import reverse
 
 urlpatterns = [
-    url(r'^(?P<post_id>\w+)/(?P<slug>.+)/$', views.post_page, name='post_page')
+    url(r'^(?P<post_id>\w+)/(?P<slug>.+)$', views.post_page, name='post_page')
 ]

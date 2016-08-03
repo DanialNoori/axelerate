@@ -1,0 +1,67 @@
+{%extends 'index.html'%}
+
+{%block title%}
+<title>اکسلریت | رویدادها</title>
+{%endblock%}
+
+{%block main%}
+ <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading -->
+        <div class="row" style="margin-top:50px">
+            <div class="col-lg-12">
+                <h1 class="page-header">رویدادها
+                    <small>رویداد های جدید</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+{% for event in events %}
+     <!-- Project One -->
+        <div class="row" >
+            <div class="col-md-7">
+                <a href="/blog/posts/{{article.id}}/{{article.slug}}">
+                {% if event.eventImage%}
+                    <img class="img-responsive" src="{{event.eventImage.url}}" alt="" style="height:180px ; width:500px; ">
+                {%endif%}
+                </a>
+            </div>
+            
+            <div class="col-md-5">
+                <h3>{{event.name}}</h3>
+                <p>{{event.description}}</p>
+                <a class="btn btn-primary" href="{{event.url}}">شرکت در رویداد</a>
+            </div>
+            
+        </div>
+        <!-- /.row -->
+
+        <hr>
+{%endfor%}
+        
+        <!-- Pagination -->
+<div class="pagination">
+    <span class="step-links">
+        <ul class="pager">
+        {% if events.has_previous %}
+            <li><a href="?page={{ articles.previous_page_number }}">صفحه قبل</a></li>
+        {% endif %}
+
+        <span class="current">
+           صفحه {{ events.number }} از {{ events.paginator.num_pages }}.
+        </span>
+
+        {% if events.has_next %}
+            <li><a href="?page={{ articles.next_page_number }}">صفحه بعد</a></li>
+        {% endif %}
+        </ul>
+    </span>
+</div>
+    
+        <!-- /.row -->
+
+        <hr>
+
+
+{%endblock%}

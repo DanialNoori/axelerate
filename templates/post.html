@@ -3,20 +3,86 @@
 {% block main%}
 
 
-
-<article>
+<article style="margin-top:100px">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="overflow-wrap: break-word;">
                 <h1>
                     {{post.title}}
                 </h1>
+                <h5>
+
+                <i class="fa fa-pencil" aria-hidden="true" style="margin-left:5px"></i>نوشته شده توسط:<a href="">
+                    {{post.author}}
+                </a>
+                </h5>
+                <hr>          
                 {% autoescape off %}
 {{post.content}}
 {% endautoescape %}
+        
+
+
+<h3 style="margin-top:50px">نظرات:</h3>
+
+{%if comments%}
+<div class="well">
+    {%for comment in comments%}
+ <div class="media">
+    <div class="media-body">
+    <h4 class="media-heading">{{comment.writer}}:</h4>
+    {{comment.text}}
+  </div>
+</div>
+<hr>
+  {%endfor%}
+</div>
+
+{%else%}
+<div class="well">هنوز نظری در مورد این مطلب داده نشده است.</div>
+{%endif%}
+<form action="/blog/posts/{{post.id}}/{{post.slug}}/" method="post">
+
+{% csrf_token %}
+<div class="well">
+
+
+<h4>ثبت نظر:</h4>    
+<div class="input-group">
+
+<h5>نام شما:</h5>
+{% if form.writer.errors %}
+<div class="alert alert-danger" role="alert">
+{{form.writer.errors.as_text}}
+</div>
+{%endif%}
+  {{form.writer}}
+</div>
+<div class="input-group">
+<h5>متن نظر:</h5>
+{% if form.text.errors %}
+<div class="alert alert-danger" role="alert">
+{{form.text.errors.as_text}}
+</div>
+{%endif%}
+  {{form.text}}
+</div>
+
+ <button type="success button" class="btn btn-success" style="margin-top:10px" type="submit">ثبت نظر</button>
+</div>
+</form>
+</div>
             </div>
+  
+
+
+
         </div>
+
     </article>
+     
+
+
       <hr>
 
 {% endblock %}

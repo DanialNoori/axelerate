@@ -1,0 +1,44 @@
+{% extends "index.html" %}
+
+{%block title%}
+<title>{{post.title}}</title>
+{%endblock%}
+
+{% block main%}
+
+
+<article style="margin-top:100px">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="overflow-wrap: break-word;">
+                <h1>
+                    {{post.title}}
+                </h1>
+                <h5>
+
+                <i class="fa fa-pencil" aria-hidden="true" style="margin-left:5px"></i>نوشته شده توسط:<a href="">
+                    {{post.author}}
+                </a>
+                </h5>
+                <hr>          
+                {% autoescape off %}
+{{post.content}}
+{% endautoescape %}
+        
+
+
+
+            </div>
+  
+
+
+
+        </div>
+
+    </article>
+     
+
+
+      <hr>
+
+{% endblock %}
