@@ -21,6 +21,7 @@ def news_main(request):
 			})
 
 def news_page(request, slug, news_id):
+	test = 1
 	if request.method == 'GET':
 		if News.objects.filter(id=news_id):
 			news = News.objects.get(id=news_id)
